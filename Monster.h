@@ -45,18 +45,23 @@ public:
         return this->health > 0;
     }
 
-    bool takeDamage(){
-        if (this->armor > 0){
-            this->health -= 1;
-            return 1;
-        }else {
-            return 0;
-        }
+    void attack(Character target) {
+        target.takeDamage(std::ceil(
+                this->strength *
+                (this->health < std::ceil(this->maxHealth*0.50)? 1.2: 1)));
     }
 
-    bool levepup(){
+    void takeDamage(int damage){
+        this->health -= damage - armor;
+    }
+
+    void levepup(){
         this->level =+ 1;
-        return 1;
+        this->maxHealth = this->maxHealth + 1;
+        this->health = std::floor(this->maxHealth * 0.75);
+        this->strength = this->strength + 1;
+        this->armor = this->armor + 1;
+        this->agility = this->agility + 1;
     }
 };
 

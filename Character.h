@@ -10,12 +10,14 @@ private:
     int agility;
     int level;
     int kills;
-
+public:
     int attack(Character target);
 
     int defense(int damage);
 
     std::string toString();
+
+    void takeDamage(int damage);
 
     bool isAlive();
 
