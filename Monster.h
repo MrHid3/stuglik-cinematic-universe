@@ -31,6 +31,10 @@ public:
         this->level = level;
     }
 
+    int getHealth() {
+        return this->health;
+    }
+
     std::string print() {
         return
         "Name: " + this->name + "\n" +
@@ -55,7 +59,7 @@ public:
         this->health -= damage - armor;
     }
 
-    void levepup(){
+    void levelup(){
         this->level =+ 1;
         this->maxHealth = this->maxHealth + 1;
         this->health = std::floor(this->maxHealth * 0.75);

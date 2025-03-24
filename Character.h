@@ -23,6 +23,23 @@ public:
 
     void recover();
 
-    void levepup();
+    void levelup();
+
+    int getHealth();
+
+    static Character* fight(Character* one, Character* two) {
+        bool which = 0;
+        while (one->isAlive() && two->isAlive()) {
+             if (which)
+                 one->attack(*two);
+             else
+                 two->attack(*one);
+             which = !which;
+        }
+        if (one->isAlive())
+            return one;
+        else
+            return two;
+    }
 };
 #endif //CHARACTER_H
